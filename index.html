@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>fangapp</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+<script>
+  !function() {
+    var html = document.documentElement;
+    var setFontSize = function() {
+        var width = html.offsetWidth;
+        if(width <= 375) {
+            html.style.fontSize = width / 3.75+ 'px';
+        } else {
+            html.style.fontSize = 100 + 'px';
+        }
+    };
+    var timer;
+    var setDelay = function() {
+        return clearTimeout(timer), (timer = setTimeout(setFontSize, 150));
+    }
+    window.addEventListener('pageshow', function(evt) {
+        return evt.persisted && setDelay();
+    });
+    window.addEventListener('resize', setDelay);
+    setFontSize();
+  }();
+</script>
