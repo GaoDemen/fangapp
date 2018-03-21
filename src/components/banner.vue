@@ -1,9 +1,9 @@
 <template>
   <div class="banner">
     <mt-swipe :auto="2000">
-        <mt-swipe-item>1</mt-swipe-item>
-        <mt-swipe-item>2</mt-swipe-item>
-        <mt-swipe-item>3</mt-swipe-item>
+        <mt-swipe-item><img src="../assets/image/house.jpg" alt=""></mt-swipe-item>
+        <mt-swipe-item><img src="../assets/image/house.jpg" alt=""></mt-swipe-item>
+        <mt-swipe-item><img src="../assets/image/house.jpg" alt=""></mt-swipe-item>
     </mt-swipe>
   </div>
 </template>
