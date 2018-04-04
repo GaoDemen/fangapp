@@ -15,6 +15,7 @@
       </mt-tab-item>
     </mt-tabbar>
     <router-view/>
+    <div class="mint-tabbar-spac"></div>
   </div>
 </template>
 
@@ -30,5 +31,12 @@ export default {
 </script>
 
 <style>
-
+  .mint-tabbar{
+    position: fixed;
+    bottom: 0;
+    z-index: 99999;
+  }
+  .mint-tabbar-spac{
+    height: 0.55rem;
+  }
 </style>

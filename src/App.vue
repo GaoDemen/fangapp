@@ -5,8 +5,19 @@
 </template>
 
 <script>
+import { mapActions } from "vuex"
 export default {
-  name: 'App'
+  name: 'App',
+  created(){
+    this.setBannerList();
+    this.setHouseList()
+  },
+  methods:{
+    ...mapActions([
+        "setBannerList",
+        "setHouseList"
+    ])
+  }
 }
 </script>
 
@@ -18,13 +29,5 @@ export default {
 ul li{
   list-style: none;
 }
-ul, menu, dir {
-    display: block;
-    list-style-type: disc;
-    -webkit-margin-before: 0em;
-    -webkit-margin-after: 0em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 0px;
-}
+
 </style>

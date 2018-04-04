@@ -61,12 +61,12 @@
         
         <div>
             <h4> 同小区房源 </h4> 
-            <house-list></house-list>
+            <house-list v-for="item in getHouseList" :key="item.id" v-bind:data="item"></house-list>
         </div>
 
         <div>
             <h4> 相似房源 </h4> 
-            <house-list></house-list>
+            <house-list v-for="item in getHouseList" :key="item.id" v-bind:data="item"></house-list>
         </div>
 
         <div>
@@ -80,12 +80,27 @@
 <script>
 import banner from "../components/banner"
 import houseList from "../components/houseList"
-
+import { mapGetters , mapActions } from "vuex"
 export default {
     name: 'homeDetail',
     components:{
         banner,
         houseList
+    },
+    created(){
+    //   console.log(this.$route.query.id)  
+        this.setHouseDetail({id:this.$route.query.id})
+    },
+    computed:{
+        ...mapGetters([
+            "getHouseList",
+            "getHouseDetailList"
+        ])
+    },
+    methods:{
+        ...mapActions([
+            "setHouseDetail"
+        ])
     }
 }
 </script>

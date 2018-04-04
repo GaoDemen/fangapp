@@ -6,12 +6,13 @@
         <div> 排列顺序 </div>
         <div> 更多顺序 </div>
     </div>
-    <house-list></house-list>
+    <house-list v-for="item in getHouseList" :key="item.id" v-bind:data="item"></house-list>
   </div>
 </template>
 
 <script>
 import houseList from "../components/houseList"
+import { mapGetters } from "vuex"
 export default {
     name: 'findHouse',
     data(){
@@ -22,6 +23,11 @@ export default {
     components:{
         houseList
     },
+    computed:{
+        ...mapGetters([
+            "getHouseList"
+        ])
+    }
 }
 </script>
 
