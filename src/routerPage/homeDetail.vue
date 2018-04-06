@@ -1,37 +1,38 @@
 <template>
   <div class="homeDetail">
-    <banner></banner>
+    <!-- <banner></banner> -->
+    <mt-swipe class="swipe" :auto="0" >
+        <mt-swipe-item v-for="item in getHouseDetailList.housePictures" :key="item.id"><img :src="`${http}${item.picture}`" alt=""></mt-swipe-item>
+    </mt-swipe>    
     <div class="homeDetail_list">
         <div class="home_info">
             <h4> 房源信息 </h4>
             <ul>
             <li>
-                <p> 编号：89757 </p>
-                <p> 户型：1室1厅1卫 </p>
+                <p> 编号：{{ getHouseDetailList.houseInfoVo.houseNo }} </p>
+                <p> 户型：{{ getHouseDetailList.houseInfoVo.houseTypeRoomCount }}室{{ getHouseDetailList.houseInfoVo.houseTypeHallCount }}厅{{ getHouseDetailList.houseInfoVo.houseTypeToiletCount }}卫 </p>
             </li>
             <li>
-                <p> 面积：40m </p>
-                <p> 楼层：2/18层 </p>
+                <p> 面积：{{ getHouseDetailList.houseInfoVo.houseArea }}m*m </p>
+                <p> 楼层：{{ getHouseDetailList.houseInfoVo.houseFloor }}/{{ getHouseDetailList.houseInfoVo.houseFloorMax }}层 </p>
             </li>
             <li>
-                <p> 福田区-安华工业区 </p>
-                <p> 酒店式公寓-整租 </p>
+                <p> {{ getHouseDetailList.houseInfoVo.addressArea }} </p>
+                <p> {{ getHouseDetailList.houseInfoVo.isBrandApartment == true?"品牌公寓":"普通公寓" }}-{{ getHouseDetailList.houseInfoVo.rentType == 1?"整租":"合租" }} </p>
             </li>
             <li>
-                <p> 6000元/月 押二付一 </p>
-                <p> 明细 </p>
+                <p class="houseRental"> {{ getHouseDetailList.houseInfoVo.houseRental }}元/月 </p>
+                <p>  押一付一  </p>
             </li>
             </ul>
-            <div>
-
-            </div>
         </div>
 
         <div>
             <h4> 地理位置 </h4> 
-            <div>  </div>
+            <p class="loaction"> <img src="../assets/image/dw.png" alt=""> <span> {{ getHouseDetailList.houseInfoVo.addressArea }}{{ getHouseDetailList.houseInfoVo.addressInfo }} </span> </p>
+            <loaction-map  class="loaction_map" v-bind:data="getHouseDetailList.houseInfoVo">  </loaction-map>
         </div> 
-        <div class="home_pz">
+        <!-- <div class="home_pz">
             <h4> 房源配置 </h4> 
             <ul>
                 <li> <img src="https://png.icons8.com/ios/288/home-filled.png" alt=""> <p> 空调 </p> </li>
@@ -57,9 +58,9 @@
                 <li> <span> 真实房源 </span> <span> 预约回电 </span> <span> 保证接听 </span> </li>
                 <li> <span> 闪电维修 </span> <span> 管家服务 </span> <span> 保洁服务 </span> </li>
             </ul>
-        </div>
+        </div> -->
         
-        <div>
+        <!-- <div>
             <h4> 同小区房源 </h4> 
             <house-list v-for="item in getHouseList" :key="item.id" v-bind:data="item"></house-list>
         </div>
@@ -71,21 +72,32 @@
 
         <div>
             <p> 房间有问题？<span> 投诉 </span> </p>
-        </div>
+        </div> -->
 
+    </div>
+    <div class="footer">
+        <div class="foooter_sc">
+            <img src="../assets/image/sc.png" alt="">
+            <span> 收藏 </span>
+        </div>
+        <a class="appointment one"> 预约看房 </a>
+        <!-- href="tel:1" getHouseDetailList.houseInfoVo.ownershipNumber -->
+        <a class="appointment two"> 联系房东 </a>
     </div>
   </div>
 </template>
 
 <script>
-import banner from "../components/banner"
+// import banner from "../components/banner"
 import houseList from "../components/houseList"
+import loactionMap from "../components/loactionMap"
 import { mapGetters , mapActions } from "vuex"
 export default {
     name: 'homeDetail',
     components:{
-        banner,
-        houseList
+        // banner,
+        houseList,
+        loactionMap
     },
     created(){
     //   console.log(this.$route.query.id)  
@@ -106,14 +118,49 @@ export default {
 </script>
 
 <style scoped>
+.appointment{
+    position: absolute;
+    right: 0.15rem;
+    top: 50%;
+    font-size: 0.14rem;
+    color: #ffffff;
+    transform: translateY(-50%);
+    background:#4784ff ;
+    padding: 0.05rem 0.15rem;
+    border-radius: 0.05rem;
+}
+.one{
+    right: 1.15rem;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 0.5rem;
+    width: 100%;
+    background: #f8f8f8 ;
+    z-index: 9999;
+    padding: 0 0.15rem;
+    box-sizing: border-box;
+}
+.foooter_sc{
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.foooter_sc img{
+    width: 0.4rem;
+}
+.foooter_sc span{
+    font-size: 0.14rem;
+    color: #888888;
+}
 .homeDetail_list{
-    
-    background: #efefef;
+    background: #f8f8f8;
 }
 .homeDetail_list div h4{
-    font-size: 0.2rem;
-    color: #333;
-    font-weight: 100;
+    font-size: 0.18rem;
+    font-weight: 500;
     margin: 0 0 0.15rem 0;
 }
 .homeDetail_list div p{
@@ -127,8 +174,17 @@ export default {
 .home_info li{
     display: flex;
 }
-.home_info li p{
-    flex: 1;
+.home_info li p:nth-of-type(1){
+    flex: 3;
+    color: #888888;
+    font-size: 0.14rem;
+    line-height: 0.4rem;
+}
+.home_info li p:nth-of-type(2){
+    flex: 2;
+    color: #888888;
+    font-size: 0.14rem;
+    line-height: 0.4rem;
 }
 .home_pz ul{
     display: flex;
@@ -160,4 +216,28 @@ export default {
     text-align: center;
     font-size: 0.14rem;
 }
+
+  .swipe{
+    height: 2.5rem;
+  }
+  .swipe img{
+    width: 100%;
+    height: 2.5rem;
+  }
+  .loaction_map{
+      height: 1.5rem;
+  }
+    .loaction{
+      display: flex;
+      align-items: center;
+      font-size: 0.14rem;
+      margin-bottom: 0.1rem;
+    }
+    .loaction img{
+      width: 0.25rem;
+      margin-right: 0.1rem
+    }
+    .loaction span{
+      color: #666;
+    } 
 </style>

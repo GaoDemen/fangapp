@@ -29,5 +29,7 @@ export default {
 ul li{
   list-style: none;
 }
-
+.amap-copyright{
+  display: none !important;
+}
 </style>
