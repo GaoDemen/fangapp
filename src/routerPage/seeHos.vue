@@ -42,7 +42,7 @@ export default {
 </script>
 <style  scoped>
   .seeHos{
-
+    background: #ffffff;
     padding: 0 0.15rem ;
   }
   .see_housHistory{

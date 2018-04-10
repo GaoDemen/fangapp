@@ -11,13 +11,13 @@
     </div>
 
     <ul>
-      <li> 发布房源 <img src="../assets/image/fbfy.png" alt="">  </li>
-      <li> 预约列表 <img src="../assets/image/yylb.png" alt="">  </li>
-      <li> 已租 <img src="../assets/image/yz.png" alt="">  </li>
-      <li> 消息 <img src="../assets/image/xx.png" alt="">  </li>
-      <li> 支付房租 <img src="../assets/image/zffz.png" alt="">  </li>
-      <li> 租约管理 <img src="../assets/image/zygl.png" alt="">  </li>
-      <li> 设置 <img src="../assets/image/sz.png" alt="">  </li>
+      <li @click="pageGo('/send')"> 发布房源 <img src="../assets/image/fbfy.png" alt="">  </li>
+      <li @click="pageGo('/seeHos')"> 预约列表 <img src="../assets/image/yylb.png" alt="">  </li>
+      <li @click="pageGo('/rented')"> 我的收藏 <img src="../assets/image/yz.png" alt="">  </li>
+      <li @click="pageGo('/msg')"> 消息 <img src="../assets/image/xx.png" alt="">  </li>
+      <li @click="pageGo('/pay')"> 支付房租 <img src="../assets/image/zffz.png" alt="">  </li>
+      <li @click="pageGo('/manage')"> 租约管理 <img src="../assets/image/zygl.png" alt="">  </li>
+      <li @click="pageGo('/set')"> 设置 <img src="../assets/image/sz.png" alt="">  </li>
     </ul>
   </div>
 </template>
@@ -28,6 +28,11 @@ export default {
   data () {
     return {
       msg: ''
+    }
+  },
+  methods:{
+    pageGo(name){
+      this.$router.push({path:name})
     }
   }
 }

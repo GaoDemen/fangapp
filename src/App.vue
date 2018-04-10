@@ -25,9 +25,17 @@ export default {
 *{
   padding: 0;
   margin: 0;
+  font-size: 0.16rem;
+}
+html,body{
+  height: 100%;
 }
 ul li{
   list-style: none;
+}
+#app{
+  min-height: 100%;
+  background: #f8f8f8;
 }
 .amap-copyright{
   display: none !important;

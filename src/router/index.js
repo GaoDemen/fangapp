@@ -8,6 +8,15 @@ import routerpass from "@/routerPage/routerpass.vue"
 import homeDetail from "@/routerPage/homeDetail.vue"
 import findHouse from "@/routerPage/findHouse.vue"
 
+// me
+import appointment from "@/routerPage/me/appointment.vue"
+import manage from "@/routerPage/me/manage.vue"
+import msg from "@/routerPage/me/msg.vue"
+import pay from "@/routerPage/me/pay.vue"
+import rented from "@/routerPage/me/rented.vue"
+import send from "@/routerPage/me/send.vue"
+import set from "@/routerPage/me/set.vue"
+
 
 Vue.use(Router)
 const router = new Router({
@@ -33,6 +42,27 @@ const router = new Router({
     },
     {
       path: "/findHouse", name: 'findHouse', component: findHouse,
+    },
+    {
+      path: "/appointment", name: 'appointment', component: appointment,
+    },
+    {
+      path: "/manage", name: 'manage', component: manage,
+    },
+    {
+      path: "/msg", name: 'msg', component: msg,
+    },
+    {
+      path: "/pay", name: 'pay', component: pay,
+    },
+    {
+      path: "/rented", name: 'rented', component: rented,
+    },
+    {
+      path: "/send", name: 'send', component: send,
+    },
+    {
+      path: "/set", name: 'set', component: set,
     }
   ]
 
