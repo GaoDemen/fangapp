@@ -16,7 +16,7 @@ import pay from "@/routerPage/me/pay.vue"
 import rented from "@/routerPage/me/rented.vue"
 import send from "@/routerPage/me/send.vue"
 import set from "@/routerPage/me/set.vue"
-
+import userInfo from "@/routerPage/me/userInfo.vue"
 
 Vue.use(Router)
 const router = new Router({
@@ -63,6 +63,9 @@ const router = new Router({
     },
     {
       path: "/set", name: 'set', component: set,
+    },
+    {
+      path: "/userInfo", name: 'userInfo', component: userInfo,
     }
   ]
 

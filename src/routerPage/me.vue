@@ -1,6 +1,6 @@
 <template>
   <div class="me">
-     <div class="user"> 
+    <div class="user"@click="pageGo('/userInfo')"> 
       <div class="user_info">
        <img src="../assets/image/user.jpg" alt=""> 
        <p> 张无忌  </p>
@@ -14,7 +14,7 @@
       <li @click="pageGo('/send')"> 发布房源 <img src="../assets/image/fbfy.png" alt="">  </li>
       <li @click="pageGo('/seeHos')"> 预约列表 <img src="../assets/image/yylb.png" alt="">  </li>
       <li @click="pageGo('/rented')"> 我的收藏 <img src="../assets/image/yz.png" alt="">  </li>
-      <li @click="pageGo('/msg')"> 消息 <img src="../assets/image/xx.png" alt="">  </li>
+      <li @click="pageGo('/msg')"> 账单管理 <img src="../assets/image/xx.png" alt="">  </li>
       <li @click="pageGo('/pay')"> 支付房租 <img src="../assets/image/zffz.png" alt="">  </li>
       <li @click="pageGo('/manage')"> 租约管理 <img src="../assets/image/zygl.png" alt="">  </li>
       <li @click="pageGo('/set')"> 设置 <img src="../assets/image/sz.png" alt="">  </li>
@@ -42,7 +42,7 @@ export default {
     background: #f8f8f8;
   }
   .me ul{
-    padding: 0.15rem;
+    padding: 0 0.15rem;
     background: #ffffff;
   }
   .me ul li{

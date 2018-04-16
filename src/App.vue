@@ -26,6 +26,8 @@ export default {
   padding: 0;
   margin: 0;
   font-size: 0.16rem;
+  /* letter-spacing: 0.02rem;
+  text-indent: 0.05rem; */
 }
 html,body{
   height: 100%;
