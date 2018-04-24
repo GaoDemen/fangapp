@@ -7,6 +7,8 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import store from './store/index'
 import url from "./https/config"
+import utils from "./tool/utils"
+
 // 引入vue-amap
 import VueAMap from 'vue-amap';
 Vue.use(VueAMap);
@@ -15,7 +17,7 @@ Vue.config.productionTip = false
 Vue.use(MintUI)
 /* eslint-disable no-new */
 Vue.prototype.http = url.url
-
+Vue.prototype.$utils = utils
 // 初始化vue-amap
 VueAMap.initAMapApiLoader({
   // 高德的key
@@ -25,6 +27,11 @@ VueAMap.initAMapApiLoader({
   // 高德 sdk 版本，默认为 1.4.4
   v: '1.4.4'
 });
+
+// vue 过滤器
+Vue.filter('timeFormat', function (nS) {
+  return new Date(parseInt(("/Date("+nS+")/").substr(6, 13))).toLocaleDateString();
+})
 
 
 new Vue({

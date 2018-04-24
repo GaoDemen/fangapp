@@ -2,11 +2,11 @@
   <div class="me">
     <div class="user"@click="pageGo('/userInfo')"> 
       <div class="user_info">
-       <img src="../assets/image/user.jpg" alt=""> 
-       <p> 张无忌  </p>
+       <img :src="`${http}${getUserInfo.headImage}`" alt=""> 
+       <p> {{ getUserInfo.userName }}  </p>
       </div>
       <div class="change_admin">
-        切换位租户
+        切换为租户
       </div>
     </div>
 
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { mapActions , mapGetters } from "vuex"
 export default {
   name: 'me',
   data () {
@@ -30,9 +31,15 @@ export default {
       msg: ''
     }
   },
+
+  computed:{
+    ...mapGetters([
+      "getUserInfo"
+    ])
+  },
   methods:{
     pageGo(name){
-      this.$router.push({path:name})
+      this.$router.push({path:name,query:{ 'userId': this.$utils.getUrlKey("userId") }})
     }
   }
 }

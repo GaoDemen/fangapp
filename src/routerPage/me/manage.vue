@@ -3,29 +3,49 @@
         <div class="manage">
             <div class="manage_ht"> 使用电子合同，保证租约 </div>
             <ul class="manage_qy">
-                <li class="active"> 未签约 </li>
-                <li> 签约 </li>
+                <li @click="changeOder(1)" :class="{active:showClass == 1}"> 未签约 </li>
+                <li @click="changeOder(2)" :class="{active:showClass == 2}"> 待签约 </li>
+                <li @click="changeOder(3)" :class="{active:showClass == 3}"> 签约 </li>
             </ul>
         </div>
-        <house-list v-for="item in getHouseList" :key="item.id" v-bind:data="item"></house-list>
+        <house-list v-if="item.orderStatus == showClass" v-for="item in getOrderList" :key="item.id" v-bind:data="item.houseInfoVo"></house-list>
     </div>
 </template>
 
 <script>
 import houseList from "../../components/houseList"
-import { mapGetters } from "vuex"
+import { mapGetters , mapActions } from "vuex"
 export default {
   name: 'manage',
+  data(){
+      return{
+          showClass:1
+      }
+  },
   components:{
     houseList
   },
+  created(){
+    this.changeOder(1)
+  },
   computed:{
     ...mapGetters([
-        "getHouseList"
+        "getOrderList"
     ])
   },
   methods:{
-   
+    ...mapActions([
+        "setOrder"
+    ]),
+    changeOder(status){
+        this.showClass = status
+        this.setOrder({
+            "order_id":"",
+            "landlord_id":"",
+            "user_id":this.$utils.getUrlKey("userId"), 
+            "type":status,            
+        })
+    }
   }
 }
 </script>

@@ -11,6 +11,21 @@ const mutations = {
     [types.SET_HOUSE_DETAIL] (state,data){
         state.houseDetailList = data.data
     },         
+    [types.SET_USER_INFO](state,data){
+        state.userInfo = data
+    }, 
+    [types.SET_ID_CARD](state,data){
+        state.cardId = data
+    },  
+    [types.SET_ORDER_BILL](state,data){
+        state.orderBill = data
+    },    
+    [types.SET_LIKE_LISE](state,data){
+        state.likeList = data
+    },
+    [types.SEND_ORDER](state,data){
+        state.orderList = data
+    },         
 }
 
 export default mutations;

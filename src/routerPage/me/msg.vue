@@ -1,19 +1,22 @@
 <template>
   <div id="msg">
     <ul class="msg_status">
-      <li class="active"> 已收 </li>
-      <li> 待收 </li>
-      <li> 未收 </li>
+      <li @click="changeClass(1)" :class="{ active: showNumber==1 }"> 未收 </li>
+      <li @click="changeClass(2)" :class="{ active: showNumber==2 }"> 已收 </li>
+      <li @click="changeClass(3)" :class="{ active: showNumber==3 }"> 待收 </li>
     </ul>  
     <ul class="msg_list">
-      <li v-for="i in 8"> 
+      <li v-for="item in getOrderBill" v-if="item.status == showNumber"> 
         <div>
-          <p class="order"> 订单号：<span> 20180315624792 </span>  </p>
-          <p class="time"> 时间：<span> 2015/8/13 </span>   </p>
-          <p class="mony"> 金额：<span> 888元 </span>   </p>
+          <p class="order"> 订单号：<span> {{ item.orderId }} </span>  </p>
+          <p class="time"> 时间：<span> {{ item.repaymentTime | timeFormat }} </span>   </p>
+          <p class="mony"> 金额：<span> {{ item.repaymentCorpus }}元 </span>   </p>
         </div>
         <div>
-          已收
+          <span v-if="item.status == 1"> 未收 </span>
+          <span v-if="item.status == 2"> 已收 </span>
+          <span v-if="item.status == 3"> 待收 </span>
+          
         </div>
       </li>
     </ul>
@@ -21,19 +24,37 @@
 </template>
 
 <script>
+import { mapActions,mapGetters } from "vuex"
 import meList from "../../components/meList"
 export default {
   name: 'msg',
   data () {
     return {
-
+      showNumber:1,
     }
   }, 
+  created(){
+    this.setOrderBill({
+      "order_id":'',
+      "landlord_id":this.$utils.getUrlKey("userId"),
+      "user_id":''
+    })
+  },
   components:{
       
+  },
+  computed:{
+    ...mapGetters([
+      "getOrderBill"
+    ])
   },  
   methods:{
-   
+    ...mapActions([
+      "setOrderBill"
+    ]),
+    changeClass(index){
+      this.showNumber = index
+    }
   }
 }
 </script>

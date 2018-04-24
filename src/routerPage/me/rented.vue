@@ -1,6 +1,6 @@
 <template>
   <div id="rented">
-    <house-list v-for="item in getHouseList" :key="item.id" v-bind:data="item"></house-list>
+    <house-list v-for="item in getLikeList" :key="item.id" v-bind:data="item"></house-list>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   },
   computed:{
     ...mapGetters([
-        "getHouseList"
+        "getLikeList"
     ])
   },  
   methods:{

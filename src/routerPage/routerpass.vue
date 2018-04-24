@@ -20,12 +20,15 @@
 </template>
 
 <script>
+
 export default {
   name: 'router',
+
   methods:{
     gopage(url){
       this.$router.push({path: url})
     },
+
   }
 }
 </script>

@@ -55,7 +55,7 @@ export default {
     }
     .houseDetil{
         margin-left: 0.15rem;
-        padding: 0.125rem 0;
+        /* padding: 0.125rem 0; */
     }
     .houseDetil p{
         font-size: 0.14rem;

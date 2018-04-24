@@ -9,7 +9,23 @@ const getters = {
     },
     getHouseDetailList(state){
         return state.houseDetailList
-    }
+    },
+    getUserInfo(state){
+        return state.userInfo
+    },
+    getCardId(state){
+        return state.cardId
+    },    
+    getOrderBill(state){
+        return state.orderBill
+    },
+    getLikeList(state){
+        return state.likeList
+    },   
+    getOrderList(state){
+        return state.orderList
+    },  
+    
 }
 
 export default getters;

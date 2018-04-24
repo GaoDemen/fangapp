@@ -12,10 +12,10 @@ export default {
   data () {
     return {
       msg: [
-            {"title":"绑定手机"},
-            {"title":"绑定邮箱"},
+            // {"title":"绑定手机"},
+            // {"title":"绑定邮箱"},
             {"title":"重置登录密码"},
-            {"title":"重置支付密码"},
+            // {"title":"重置支付密码"},
             {"title":"常见问题"},
             {"title":"意见提交"},
             {"title":"关于"},

@@ -10,12 +10,19 @@ export default {
   name: 'App',
   created(){
     this.setBannerList();
-    this.setHouseList()
+    this.setHouseList();
+    this.setUserInfo(this.$utils.getUrlKey("userId"))
+    this.setIdCard(this.$utils.getUrlKey("userId"))
+    this.setLikeList({"userId":this.$utils.getUrlKey("userId")})
+    
   },
   methods:{
     ...mapActions([
         "setBannerList",
-        "setHouseList"
+        "setHouseList",
+        "setUserInfo",
+        "setIdCard",
+        "setLikeList"
     ])
   }
 }
