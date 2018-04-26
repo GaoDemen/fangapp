@@ -76,14 +76,15 @@
 
     </div>
     <div class="footer">
-        <div class="foooter_sc">
+        <div class="foooter_sc" @click="setLikeHouse()">
             <img src="../assets/image/sc.png" alt="">
             <span> 收藏 </span>
         </div>
-        <a class="appointment one"> 预约看房 </a>
+        <a class="appointment one" @click="showModel()" > 预约看房 </a>
         <!-- href="tel:1" getHouseDetailList.houseInfoVo.ownershipNumber -->
         <a class="appointment two"> 联系房东 </a>
     </div>
+    <!-- <model v-bind:data="popupVisible"></model> -->
   </div>
 </template>
 
@@ -91,13 +92,22 @@
 // import banner from "../components/banner"
 import houseList from "../components/houseList"
 import loactionMap from "../components/loactionMap"
+// import model from "../components/model"
 import { mapGetters , mapActions } from "vuex"
+import { Toast } from "mint-ui"
+import qs from "qs"
 export default {
     name: 'homeDetail',
+    data(){
+        return{
+            popupVisible:false,
+        }
+    },
     components:{
         // banner,
         houseList,
-        loactionMap
+        loactionMap,
+        // model
     },
     created(){
     //   console.log(this.$route.query.id)  
@@ -112,7 +122,47 @@ export default {
     methods:{
         ...mapActions([
             "setHouseDetail"
-        ])
+        ]),
+        showModel(){
+           this.popupVisible = true  
+        },
+        setLikeHouse(){
+            const that = this;
+            console.log(this.$utils.getUrlKey('userId'))
+            if(this.$utils.getUrlKey('userId') == null || this.$utils.getUrlKey('userId') == undefined || this.$utils.getUrlKey('userId') == ""){
+                Toast({
+                    message: '请您先登录，在预约哦',
+                    iconClass: 'icon icon-err'
+                });
+            }else{
+                
+                this.$axios.post(
+                    `${that.http}/index?opt=207`,
+                    qs.stringify(
+                    {
+                        "userId":this.$utils.getUrlKey('userId'),
+                        "houseId":this.$utils.getUrlKey('id'),
+                        "remark":"备注"
+                    }
+                    )).then(function (response) {
+                        if(response.data.success == true){
+                            Toast({
+                                message: response.data.msg,
+                                iconClass: 'icon icon-suc'
+                            });
+                        }else{
+                            Toast({
+                                message: response.data.msg,
+                                iconClass: 'icon icon-err'
+                            });
+                        }
+
+                    }).catch(function (error) {
+                
+                    });
+                }
+
+            },
     }
 }
 </script>
@@ -142,6 +192,7 @@ export default {
     z-index: 9999;
     padding: 0 0.15rem;
     box-sizing: border-box;
+    z-index: 1;
 }
 .foooter_sc{
     display: flex;
@@ -240,4 +291,5 @@ export default {
     .loaction span{
       color: #666;
     } 
+  
 </style>

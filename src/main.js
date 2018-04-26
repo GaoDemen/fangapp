@@ -8,7 +8,7 @@ import 'mint-ui/lib/style.css'
 import store from './store/index'
 import url from "./https/config"
 import utils from "./tool/utils"
-
+import axios from "axios"
 // 引入vue-amap
 import VueAMap from 'vue-amap';
 Vue.use(VueAMap);
@@ -16,8 +16,10 @@ Vue.use(VueAMap);
 Vue.config.productionTip = false
 Vue.use(MintUI)
 /* eslint-disable no-new */
-Vue.prototype.http = url.url
-Vue.prototype.$utils = utils
+Vue.prototype.http = url.url;
+Vue.prototype.$utils = utils;
+Vue.prototype.$axios = axios;
+
 // 初始化vue-amap
 VueAMap.initAMapApiLoader({
   // 高德的key

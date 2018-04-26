@@ -1,6 +1,6 @@
 <template>
   <div class="seeHos">
-    <ul class="see_housHistory">
+    <!-- <ul class="see_housHistory">
       <li> 
         <h4> 看房行程 </h4>
         <p> 共2个看房行程哟 </p>
@@ -8,7 +8,7 @@
       <li> 
         <p> <span> 历史 </span>  <img src="../assets/image/more.png" alt=""></p>
       </li>
-    </ul>
+    </ul> -->
     <div class="tosee" v-for="item in getHouseList">
       <p class="time"> <img src="../assets/image/time.png" alt="">  <span>  2018-01-10 08:00 </span> </p>
       <div class="map">
