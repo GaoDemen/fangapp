@@ -25,7 +25,17 @@ const mutations = {
     },
     [types.SEND_ORDER](state,data){
         state.orderList = data
-    },         
+    },
+    [types.SET_PROVINCE](state,data){
+
+        state.provinceList[0].values = data
+    }, 
+    [types.SET_CITY](state,data){
+        state.cityList[0].values = data
+    }, 
+    [types.SET_COUNTY](state,data){
+        state.countyList[0].values = data
+    },          
 }
 
 export default mutations;

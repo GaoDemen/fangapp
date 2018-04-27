@@ -25,7 +25,15 @@ const getters = {
     getOrderList(state){
         return state.orderList
     },  
-    
+    getProvince(state){
+        return state.provinceList
+    },  
+    getCity(state){
+        return state.cityList
+    },  
+    getCounty(state){
+        return state.countyList
+    },      
 }
 
 export default getters;

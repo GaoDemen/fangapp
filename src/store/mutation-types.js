@@ -6,7 +6,9 @@ const SET_ID_CARD = "SET_ID_CARD"
 const SET_ORDER_BILL = "SET_ORDER_BILL"
 const SET_LIKE_LISE = "SET_LIKE_LISE"
 const SEND_ORDER = "SEND_ORDER"
-
+const SET_PROVINCE = "SET_PROVINCE"
+const SET_CITY = "SET_CITY"
+const SET_COUNTY = "SET_COUNTY"
 
 
 
@@ -19,4 +21,7 @@ export default{
     SET_ORDER_BILL,      //  账单管理
     SET_LIKE_LISE,       //  收藏列表
     SEND_ORDER,          //  订单列表
+    SET_PROVINCE,        //  获取省
+    SET_CITY,            //  获取市
+    SET_COUNTY           //  获取区
 }

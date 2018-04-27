@@ -91,6 +91,29 @@ const actions = {
             context.commit('SEND_ORDER', response.data)
         });
     },     
-
+    // 获取省份列表
+    setProvince(context,type){
+        axios.HttpPost('/index?opt=310').then(function (response) {
+            context.commit('SET_PROVINCE', response.data)
+        });
+    }, 
+    // 获取市列表
+    setCity(context,type){
+        axios.HttpPost('/index?opt=311',{
+            'region_type':type.region_type,
+            "parent_id":type.parent_id,
+        }).then(function (response) {
+            context.commit('SET_CITY', response.data)
+        });
+    }, 
+    // 获取区列表
+    setCounty(context,type){
+        axios.HttpPost('/index?opt=311',{
+            'region_type':type.region_type,
+            "parent_id":type.parent_id,
+        }).then(function (response) {
+            context.commit('SET_COUNTY', response.data)
+        });
+    },         
 }
 export default actions;

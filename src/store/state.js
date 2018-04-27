@@ -6,6 +6,9 @@ const state = {
     cardId:Object,
     orderBill:[Object],
     likeList:[Object],
-    orderList:[Object]
+    orderList:[Object],
+    provinceList:[{"values":[]}],
+    cityList:[{"values":[]}],
+    countyList:[{"values":[]}],
 }
 export default state;
