@@ -42,8 +42,9 @@ export default {
         },
         onDataChange(picker, values){
             if(values[0] !== undefined){
-                this.initData = values[0]
-                this.$emit("sendData",this.initData)
+                this.initData = values[0].name
+                // console.log(values)
+                this.$emit("sendData",values[0].index)
             }
            
         }

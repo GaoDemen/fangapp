@@ -1,6 +1,6 @@
 <template>
   <div id="router">
-    <mt-tabbar>
+    <!-- <mt-tabbar>
       <mt-tab-item id="首页" @click.native="gopage('/home')">
         <img slot="icon" src="../assets/image/home.png">
         首页
@@ -13,7 +13,7 @@
         <img slot="icon" src="../assets/image/me.png">
         我的
       </mt-tab-item>
-    </mt-tabbar>
+    </mt-tabbar> -->
     <router-view/>
     <div class="mint-tabbar-spac"></div>
   </div>

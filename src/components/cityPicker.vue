@@ -19,11 +19,11 @@
         <mt-popup v-model="province" position="bottom">
             <mt-picker :slots="getProvince" valueKey="name" @change="onProvinceChange"></mt-picker>
         </mt-popup>
-        <mt-popup v-model="city" position="bottom" >
+        <mt-popup v-model="city" position="bottom">
             <mt-picker :slots="getCity" valueKey="name" @change="onCityChange"></mt-picker>
         </mt-popup>
-        <mt-popup v-model="county" position="bottom" >
-            <mt-picker :slots="getCounty" valueKey="name"  @change="onCountyChange"></mt-picker>
+        <mt-popup v-model="county" position="bottom">
+            <mt-picker :slots="getCounty" valueKey="name" @change="onCountyChange"></mt-picker>
         </mt-popup>
     </div>
 </template>
@@ -70,30 +70,28 @@ export default {
         },
         onProvinceChange(picker, values) {
             if (values[0] !== undefined) {
-               
                 this.address.addressprovince = values[0].name;
                 this.setCity({
                     region_type: 1,
                     parent_id: values[0].regionId
                 });
+               
             }
         },
         onCityChange(picker, values) {
-         
             if (values[0] !== undefined) {
-             
                 this.address.addresscity = values[0].name;
                 this.setCounty({
                     region_type: 2,
                     parent_id: values[0].regionId
                 });
+               
             }
         },
         onCountyChange(picker, values) {
-   
             if (values[0] !== undefined) {
-             
                 this.address.addresscounty = values[0].name;
+                this.$emit("sendData",this.address);
             }
         }
     }

@@ -42,9 +42,10 @@ export default {
             console.log(file);
             console.log("压缩前：" + file.size);
             lrz(file, { width: 300 }).then(function(rest) {
-                rest.file["name"] = "ic_ga-brnn.png";
+                 console.log(rest);
+                // rest.file["name"] = "ic_ga-brnn.png";
 
-                console.log(rest);
+               
                 console.log("压缩前后：" + rest.file.size);
 
                 if (rest.file.size > 1024000) {
@@ -115,19 +116,21 @@ export default {
 }
 .imgList {
     width: 100%;
-    padding: 0 10px;
+    padding: 0 5%;
     overflow: hidden;
+    box-sizing: border-box;
 }
 .imgList li {
-    width: 30%;
-    padding: 0.1rem;
+    width: 33%;
+    text-align: center;
+    margin: 0.1rem;
     float: left;
     height: 1rem;
     box-sizing: border-box;
     margin: 0.1rem 0;
 }
 .imgList li img {
-    width: 100%;
+    width: 90%;
     height: 1rem;
 }
 .imgList .uploadBtn img{
